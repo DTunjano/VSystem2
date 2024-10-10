@@ -6,7 +6,12 @@ from Persona.models import Persona
 class Curso(models.Model):
     nombre = models.CharField(max_length=100)
     capacidad_maxima = models.IntegerField(null=False)
-    profesor = models.ForeignKey(Persona, on_delete=models.SET_NULL, null=True)
+    profesor = models.ForeignKey(
+        Persona, 
+        on_delete=models.SET_NULL, 
+        null=True,
+        limit_choices_to={'rol': 'Profesor'}
+        )
     
     def save(self, *args, **kwargs):
         self.full_clean()  
@@ -24,7 +29,7 @@ class Curso(models.Model):
             raise ValidationError('Solo se pueden asiganar a profesores en este campo.')
         
     def __str__(self):
-        return {self.nombre}
+        return self.nombre
 
     class Meta:
         db_table = 'curso'
