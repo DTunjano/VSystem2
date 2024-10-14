@@ -1,29 +1,39 @@
 {% extends "index.html" %}
+{% load static %}
 {% block content %}
 
-    <h1> {{title}} </h1>
+<h1>{{ title }}</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Capacidad maxima</th>
-                <th scope="col">Profesor designado</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for curso in cursos %}
-            <tr>
-                <th scope="row">{{forloop.counter}}</th>
-                <td>{{curso.id}}</td>
-                <td>{{curso.nombre}}</td>
-                <td>{{curso.capacidad_maxima}}</td>
-                <td>{{curso.profesor}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    
+<div class="flex-container mb-3">
+    <a href="" class="btn btn-success">Nuevo curso</a> 
+</div>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="thead-light"> 
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Capacidad máxima</th>
+            <th scope="col">Profesor designado</th>
+            <th scope="col">Funciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for curso in cursos %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ curso.id }}</td>
+            <td>{{ curso.nombre }}</td>
+            <td>{{ curso.capacidad_maxima }}</td>
+            <td>{{ curso.profesor }}</td>
+            <td>
+                <a href="" class="btn btn-secondary btn-sm">Editar</a>
+                <a href="" class="btn btn-danger btn-sm">Eliminar</a> 
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock content %}

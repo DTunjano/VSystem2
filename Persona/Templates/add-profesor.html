@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <h1>{{title}}</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="nameTextInput" class="form-label">Nombre del Profesor</label>
+            <input type="text" name='nombre_input' class="form-control" id="nameTextInput" placeholder="Ej: Felipe">
+        </div>
+        <div class="mb-3">
+            <label for="lastNameTextInput" class="form-label">Apellido de Profesor</label>
+            <input type="text" name='apellido_input' class="form-control" id="lastNameTextInput" placeholder="Ej: Castro">
+        </div>
+        <div class="mb-3">
+            <label for="dniTextInput" class="form-label">DNI de Profesor</label>
+            <input type="text" name='dni_input' class="form-control" id="dniTextInput" placeholder="Ej: 1000003432">
+        </div>
+        <div class="mb-3">
+            <label for="phoneNumberTextInput" class="form-label">Telefono de Profesor</label>
+            <input type="telefono" name='telefono_input' class="form-control" id="phoneNumberTextInput" placeholder="Ej: 1234567890">
+        </div>
+        <div class="mb-3">
+            <label for="emailInput" class="form-label">Email de Profesor</label>
+            <input type="email" name='email_input' class="form-control" id="emailInput" placeholder="Ej: felipe123@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="bornDateInput" class="form-label">Fecha de nacimiento de Profesor</label>
+            <input type="date" name='fecha_nacimiento_input' class="form-control" id="bornDateInput">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+
+
+{% endblock content %}

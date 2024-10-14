@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center"> 
+            <h3>{{ title }}</h3>
+        </div>
+        <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="nameTextInput" class="form-label">Nombre del estudiante</label>
+                    <input type="text" name="nombre_input" class="form-control" id="nameTextInput" placeholder="Ej: Felipe" value="{{ estudiante.nombre }}">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="lastNameTextInput" class="form-label">Apellido del estudiante</label>
+                    <input type="text" name="apellido_input" class="form-control" id="lastNameTextInput" placeholder="Ej: Castro" value="{{ estudiante.apellido|default:'' }}">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="dniTextInput" class="form-label">DNI del estudiante</label>
+                    <input type="text" name="dni_input" class="form-control" id="dniTextInput" placeholder="Ej: 1000003432" value="{{ estudiante.dni }}">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="phoneNumberTextInput" class="form-label">Teléfono del estudiante</label>
+                    <input type="tel" name="telefono_input" class="form-control" id="phoneNumberTextInput" placeholder="Ej: 1234567890" value="{{ estudiante.telefono }}">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Email del estudiante</label>
+                    <input type="email" name="email_input" class="form-control" id="emailInput" placeholder="Ej: felipe123@example.com" value="{{ estudiante.email }}">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="bornDateInput" class="form-label">Fecha de nacimiento del estudiante</label>
+                    <input type="date" name="fecha_nacimiento_input" class="form-control" id="bornDateInput" value="{{ estudiante.fecha_nacimiento|date:'Y-m-d' }}">
+                </div>
+
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

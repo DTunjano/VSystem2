@@ -229,3 +229,13 @@ footer{
 .formCreatePersona input[type="text"]{
     text-transform: capitalize;
 }
+
+.flex-container {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.table {
+    margin-top: 20px; 
+}
+

@@ -9,32 +9,37 @@
     <title>VSystem 2.0</title>
 </head>
 <body>
-    <h1> Pagina Principal </h1>
-
     <header>
-
-        
-        
-
     </header>
 
 
-    <nav class="nav">
-        <ul class="nav justify-content-center">
-            <li class="nav-item">
-                <a style="text-decoration: none;" href="{% url "paginaPrincipal" %}">Inicio</a>
-            </li>            
-            <li class="nav-item">
-                <a style="text-decoration: none;" href="{% url "listaEstudiantes" %}">Estudiantes</a>
-            </li>         
-            <li class="nav-item">
-                <a style="text-decoration: none;" href="{% url "addEstudiante" %}">Agregar estudiante</a>
-            </li>         
-            <li class="nav-item">
-                <a style="text-decoration: none;" href="{% url "listaCursos" %}">Cursos</a>
-            </li>         
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'paginaPrincipal' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listaEstudiantes' %}">Estudiantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listaProfesores' %}">Profesores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listaCursos' %}">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Estudiantes por Curso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Matriculas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
+    
 
 
     <div id="content">
