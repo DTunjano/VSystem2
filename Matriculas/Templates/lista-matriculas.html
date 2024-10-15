@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+
+<h1>{{ title }}</h1>
+
+<div class="flex-container mb-3">
+    <a href="{% url "addMatricula" %}" class="btn btn-success">Nuevo curso</a> 
+</div>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="thead-light"> 
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">Estudiante - Curso</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Fecha de Inicio</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Funciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for matricula in matriculas %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ matricula.id }}</td>
+            <td>{{ matricula.estudianteCurso_id }}</td>
+            <td>{{ matricula.estado }}</td>
+            <td>{{ matricula.fecha_inicio }}</td>
+            <td>{{ matricula.costo }}</td>
+            <td>
+                <a href="{% url "editarMatricula" matricula.id %}" class="btn btn-secondary btn-sm">Editar</a>
+                <a href="{% url "eliminarMatricula" matricula.id %}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro que deseas eliminar este registro?')">Eliminar</a> 
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

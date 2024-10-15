@@ -34,7 +34,7 @@
             <td>{{ estudiante.telefono }}</td>
             <td>
                 <a href="{% url 'editarEstudiante' estudiante.id %}" class="btn btn-secondary btn-sm">Editar</a>
-                <a href="" class="btn btn-danger btn-sm">Eliminar</a>
+                <a href="{% url "eliminarPersona" estudiante.id %}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro que deseas eliminar este registro?')">Eliminar</a>
             </td>
         </tr>
         {% endfor %}

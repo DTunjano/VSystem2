@@ -15,7 +15,7 @@ class Persona(models.Model):
     rol = models.CharField(max_length=50, choices=ROL_CHOICES)
     
     def __str__(self) -> str:
-        return f'{self.nombre} {self.apellido}'
+        return f'{self.nombre} {self.apellido} -'
     
     class Meta:
         db_table='persona'

@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header text-white text-center" style="background-color: #34495e;"> 
+            <h3>{{ title }}</h3>
+        </div>
+        <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="nameTextInput" class="form-label">Nombre del curso</label>
+                    <input type="text" name="nombre_input" class="form-control" id="nameTextInput" placeholder="Ej: Felipe" value="{{ curso.nombre }}">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="lastNameTextInput" class="form-label">Capacidad maxima de estudiantes</label>
+                    <input type="text" name="capacidad_maxima_input" class="form-control" id="lastNameTextInput" placeholder="Ej: 20" value="{{ curso.capacidad_maxima}}">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="profesorSelect" class="form-label">Profesor designado</label>
+                    <select name="profesor_input" class="form-control" id="profesorSelect">
+                        <option value="">Seleccione un profesor</option>
+                        {% for profesor in profesores %}
+                            <option value="{{ profesor.id }}" {% if curso.profesor == profesor.id %}selected{% endif %}>
+                                {{ profesor.nombre }} {{ profesor.apellido }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

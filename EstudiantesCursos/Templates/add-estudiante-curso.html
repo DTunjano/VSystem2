@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header text-white text-center" style="background-color: #ca6f1e;"> 
+            <h3>{{ title }}</h3>
+        </div>
+        <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="estudianteSelect" class="form-label">Nombre del estudiante</label>
+                    <select name="estudiante_id_input" class="form-control" id="estudianteSelect">
+                        <option value="">Seleccione un estudiante</option>
+                        {% for estudiante in estudiantes %}
+                            <option value="{{ estudiante.id }}">
+                                {{ estudiante.nombre }} {{ estudiante.apellido }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="cursoSelect" class="form-label">Nombre del curso</label>
+                    <select name="curso_id_input" class="form-control" id="cursoSelect">
+                        <option value="">Seleccione un curso</option>
+                        {% for curso in cursos %}
+                            <option value="{{ curso.id }}">
+                                {{ curso.nombre }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="dniTextInput" class="form-label">Fecha de inicio</label>
+                    <input type="date" name="fecha_inicio_input" class="form-control" id="dniTextInput">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="phoneNumberTextInput" class="form-label">fecha de finalización</label>
+                    <input type="date" name="fecha_fin_input" class="form-control" id="phoneNumberTextInput">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Estado</label>
+                    <input type="text" name="estado_input" class="form-control" id="emailInput" placeholder="Ej: Aprobado, No Aprobado">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Nota final</label>
+                    <input type="text" name="nota_final_input" class="form-control" id="emailInput" placeholder="Ej: 3.0">
+                </div>
+
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

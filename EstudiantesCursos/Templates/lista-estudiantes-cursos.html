@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+
+<h1>{{ title }}</h1>
+
+<div class="flex-container mb-3">
+    <a href="{% url "addEstudianteCurso" %}" class="btn btn-success">Nuevo estudiante por curso</a> 
+</div>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="thead-light"> 
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre del estudiante</th>
+            <th scope="col">Nombre del curso</th>
+            <th scope="col">Fecha de inicio</th>
+            <th scope="col">Fecha de finalización</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Nota final</th>
+            <th scope="col">Funciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for estudiantes_cursos in est_x_curso %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ estudiantes_cursos.estudiante_id }}</td>
+            <td>{{ estudiantes_cursos.curso_id }}</td>
+            <td>{{ estudiantes_cursos.fecha_inicio }}</td>
+            <td>{{ estudiantes_cursos.fecha_fin }}</td>
+            <td>{{ estudiantes_cursos.estado }}</td>
+            <td>{{ estudiantes_cursos.nota_final }}</td>
+            <td>
+                <a href="{% url "editarEstudianteCurso" estudiantes_cursos.id%}" class="btn btn-secondary btn-sm">Editar</a>
+                <a href="{% url 'eliminarEstudianteCurso' estudiantes_cursos.id %}" class="btn btn-danger btn-sm" 
+                    onclick="return confirm('¿Estás seguro que deseas eliminar este registro?')">Eliminar</a>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

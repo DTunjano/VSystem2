@@ -42,8 +42,6 @@ def nuevoEstudiante(request):
 def gestionarEstudiante(request, id):
     estudiante = get_object_or_404(Persona, id=id)
 
-    print(estudiante)
-
     if(request.method == 'POST'):
         estudiante.nombre = request.POST.get('nombre_input')
         estudiante.apellido = request.POST.get('apellido_input')
@@ -59,6 +57,16 @@ def gestionarEstudiante(request, id):
         'title': 'Información del estudiante',
         'estudiante': estudiante
         })
+
+def eliminarPersona(request, id):
+    persona = get_object_or_404(Persona, id=id)
+    
+    persona.delete()
+
+    if persona.rol == 'Profesor':
+        return redirect('listaProfesores')
+
+    return redirect('listaEstudiantes')
 
 #Profesores
 def getProfesores(request):

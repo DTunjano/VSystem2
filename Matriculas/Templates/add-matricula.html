@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header text-white text-center" style="background-color: #34495e;"> 
+            <h3>{{ title }}</h3>
+        </div>
+        <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="profesorSelect" class="form-label">Estudiante - Curso</label>
+                    <select name="estudiante_curso_id_input" class="form-control" id="profesorSelect">
+                        <option value="">Seleccione un estudiante - curso</option>
+                        {% for estudiante_curso in estudiantes_cursos %}
+                            <option value="{{ estudiante_curso.id }}" >
+                                {{ estudiante_curso.estudiante_id }} {{ estudiante_curso.curso_id }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="nameTextInput" class="form-label">Estado</label>
+                    <input type="text" name="estado_input" class="form-control" id="nameTextInput" placeholder="Ej: No se" >
+                </div>
+                
+                <div class="mb-3">
+                    <label for="lastNameTextInput" class="form-label">Fecha de inicio</label>
+                    <input type="date" name="fecha_inicio_input" class="form-control" id="lastNameTextInput">
+                </div>
+                <div class="mb-3">
+                    <label for="lastNameTextInput" class="form-label">Costo</label>
+                    <input type="text" name="costo_input" class="form-control" id="lastNameTextInput" placeholder="Ej: 2000000">
+                </div>
+                
+                
+                
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
